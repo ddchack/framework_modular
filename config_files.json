@@ -1,0 +1,77 @@
+# config/config.json
+{
+  "ai_providers": {
+    "openai": {
+      "api_key": "${OPENAI_API_KEY}",
+      "model": "gpt-3.5-turbo",
+      "max_tokens": 1000,
+      "temperature": 0.7,
+      "timeout": 30
+    },
+    "anthropic": {
+      "api_key": "${ANTHROPIC_API_KEY}",
+      "model": "claude-3-sonnet",
+      "max_tokens": 1000,
+      "temperature": 0.7,
+      "timeout": 30
+    },
+    "huggingface": {
+      "api_key": "${HUGGINGFACE_API_KEY}",
+      "model": "microsoft/DialoGPT-medium",
+      "max_tokens": 500
+    }
+  },
+  "nlp": {
+    "language": "es",
+    "sentiment_analysis": {
+      "enabled": true,
+      "threshold": 0.6
+    },
+    "entity_recognition": {
+      "enabled": true,
+      "custom_entities": ["producto", "servicio", "empresa"]
+    },
+    "intent_classification": {
+      "enabled": true,
+      "confidence_threshold": 0.7,
+      "fallback_intent": "general"
+    },
+    "preprocessing": {
+      "remove_stopwords": true,
+      "lemmatization": true,
+      "lowercase": true
+    }
+  },
+  "learning": {
+    "enabled": true,
+    "feedback_weight": 0.1,
+    "memory_limit": 1000,
+    "save_interval": 300,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "model_update_frequency": "daily"
+  },
+  "conversation": {
+    "max_history": 50,
+    "context_window": 10,
+    "response_timeout": 30,
+    "session_timeout": 3600,
+    "enable_memory": true
+  },
+  "security": {
+    "rate_limiting": {
+      "requests_per_minute": 60,
+      "requests_per_hour": 1000
+    },
+    "input_validation": {
+      "max_message_length": 2000,
+      "forbidden_patterns": ["<script>", "javascript:", "data:"]
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/ai_framework.log",
+    "max_size": "10MB",
+    "backup_count": 5
+  }
+}
